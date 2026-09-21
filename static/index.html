@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Photo Culler</title>
+<link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+
+<div id="stage">
+  <img id="photo" alt="" draggable="false">
+  <div id="flash"></div>
+</div>
+
+<header id="chrome-top">
+  <div id="meta">
+    <span id="filename">&nbsp;</span>
+    <span id="dims" class="dim"></span>
+    <span id="print" class="print"></span>
+    <span id="raw" class="badge hidden">RAW</span>
+  </div>
+  <div id="tally">
+    <span id="position" class="pos"></span>
+    <span class="tick keep">K <b id="n-keep">0</b></span>
+    <span class="tick maybe">M <b id="n-maybe">0</b></span>
+    <span class="tick reject">R <b id="n-reject">0</b></span>
+  </div>
+</header>
+
+<footer id="chrome-bottom">
+  <div id="progress"><div id="progress-fill"></div></div>
+  <div id="hint">
+    <span>&larr; reject</span><span>&rarr; keep</span><span>&uarr; maybe</span>
+    <span>&darr;/U undo</span><span>&#8679;&larr;/&#8679;&rarr; browse</span>
+    <span>space skip</span><span>Z zoom</span><span>E export</span>
+  </div>
+</footer>
+
+<div id="zoom" class="hidden">
+  <img id="zoom-img" alt="" draggable="false">
+  <div id="zoom-note">100% &middot; release Z to exit</div>
+</div>
+
+<div id="modal" class="hidden">
+  <div class="panel">
+    <h2>Export</h2>
+    <p class="sub">Keeps and maybes are copied. Rejects are not exported. Nothing in
+      the source folder is touched.</p>
+    <label for="dest">Destination folder</label>
+    <input id="dest" type="text" spellcheck="false" autocomplete="off"
+           placeholder="/path/to/album-selects">
+    <div id="modal-summary"></div>
+    <div id="modal-error" class="err hidden"></div>
+    <div class="actions">
+      <button id="export-cancel" type="button">Cancel (Esc)</button>
+      <button id="export-go" type="button" class="primary">Export</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="hidden"></div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>
