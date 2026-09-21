@@ -129,6 +129,19 @@
 
   el.photo.addEventListener("load", function () {
     el.photo.classList.remove("loading");
+    el.photo.classList.remove("failed");
+  });
+
+  // A file Pillow cannot decode still gets a review slot, and its proxy request
+  // 500s. Without this the stage just sits dim and empty, which reads as a bad
+  // exposure rather than a broken file - and you might reject a good photo.
+  el.photo.addEventListener("error", function () {
+    var photo = photos[index];
+    el.photo.classList.remove("loading");
+    el.photo.classList.add("failed");
+    toast("Could not display " + (photo ? photo.name : "this photo")
+      + " - the file may be truncated or in an unsupported format. "
+      + "The original is untouched; skip it with Space.", 6000);
   });
 
   function preload() {

@@ -45,6 +45,19 @@ html, body {
 
 #photo.loading { opacity: 0.35; }
 
+/* An unreadable file must not look like a dark frame you could judge. */
+#photo.failed {
+  opacity: 1;
+  min-width: 42vw;
+  min-height: 28vh;
+  background:
+    repeating-linear-gradient(45deg,
+      rgba(200, 60, 60, 0.10) 0 12px,
+      rgba(200, 60, 60, 0.03) 12px 24px);
+  outline: 1px solid rgba(200, 60, 60, 0.45);
+  outline-offset: -1px;
+}
+
 /* A brief edge wash confirms the decision without stealing attention. */
 #flash {
   position: fixed;
